@@ -1,14 +1,17 @@
 package lotto.View;
 
-import lotto.Lotto;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
-
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class InputViewTest {
+    @Test
+    void 복권_정상_구매() {
+        assertThat(new InputView().validatePurchaseAmount("12000"))
+                .isEqualTo(12);
+    }
+
     @Test
     void 예외_복권_구매_금액_정수값_아님() {
         assertThatThrownBy(() -> new InputView().validatePurchaseAmount("ss"))
