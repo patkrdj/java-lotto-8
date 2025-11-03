@@ -75,7 +75,7 @@ public class LottoGame {
                     boolean bonusMatch = lotto.compareBonusNumber(bonusNumber);
                     return LottoPrice.valueOf(matches, bonusMatch);
                 })
-                .forEach( price -> {
+                .forEach(price -> {
                     winningCount.merge(price, 1L, Long::sum);
                 });
         return winningCount;

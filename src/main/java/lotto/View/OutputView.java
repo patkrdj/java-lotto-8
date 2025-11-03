@@ -28,7 +28,7 @@ public class OutputView {
                 LottoGame.LottoPrice.FIRST
         );
         for (LottoGame.LottoPrice winning : winnings) {
-            System.out.printf( "%s (%,d원)", winning.getDescription(), winning.getPrice());
+            System.out.printf("%s (%,d원)", winning.getDescription(), winning.getPrice());
             System.out.print(" - ");
             System.out.println(winningCounts.get(winning) + "개");
         }
