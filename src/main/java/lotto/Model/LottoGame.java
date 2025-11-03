@@ -8,21 +8,27 @@ import java.util.stream.Collectors;
 
 public class LottoGame {
     public enum LottoPrice {
-        FIRST(2_000_000_000),
-        SECOND(30_000_000),
-        THIRD(1_500_000),
-        FOURTH(50_000),
-        FIFTH(5_000),
-        MISS(0);
+        FIRST(2_000_000_000, "6개 일치"),
+        SECOND(30_000_000, "5개 일치, 보너스 불 일치"),
+        THIRD(1_500_000, "5개 일치"),
+        FOURTH(50_000, "4개 일치"),
+        FIFTH(5_000, "3개 일치"),
+        MISS(0, "");
 
         private final long price;
+        private final String description;
 
-        LottoPrice(long price) {
+        LottoPrice(long price, String description) {
             this.price = price;
+            this.description = description;
         }
 
         public long getPrice() {
             return price;
+        }
+
+        public String getDescription() {
+            return description;
         }
 
         public static LottoPrice valueOf(long matches, boolean bonusMatch) {
