@@ -5,16 +5,16 @@ import lotto.Model.LottoGame;
 
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class OutputView {
     public void printLottoNumbers(List<Lotto> lottos) {
         System.out.println(lottos.size() + "개를 구매했습니다.");
         lottos.forEach(lotto -> {
-            System.out.print('[');
-            for (int number : lotto.getNumbers()) {
-                System.out.print(number + " ,");
-            }
-            System.out.println(']');
+            String numbers = lotto.getNumbers().stream()
+                    .map(String::valueOf)
+                    .collect(Collectors.joining(", "));
+            System.out.println("[" + numbers + "]");
         });
     }
 
@@ -28,13 +28,13 @@ public class OutputView {
                 LottoGame.LottoPrice.FIRST
         );
         for (LottoGame.LottoPrice winning : winnings) {
-            System.out.print(winning.getDescription() + " (" + winning.getPrice() + "원)");
+            System.out.printf( "%s (%,d원)", winning.getDescription(), winning.getPrice());
             System.out.print(" - ");
             System.out.println(winningCounts.get(winning) + "개");
         }
     }
 
     public void printTotalReturns(LottoGame lottoGame) {
-        System.out.printf("총 수익률은 %.1f%%입니다.%n", lottoGame.getTotalReturns() * 100);
+        System.out.printf("총 수익률은 %,.1f%%입니다.%n", lottoGame.getTotalReturns() * 100);
     }
 }
