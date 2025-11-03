@@ -2,6 +2,10 @@ package lotto.View;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class InputView {
     public int readPurchaseAmount() {
         System.out.println("구입금액을 입력해 주세요.");
@@ -12,6 +16,18 @@ public class InputView {
                 System.out.println("[ERROR]: " + e.getMessage());
             }
         }
+    }
+
+    public List<Integer> readWinningNumbers() {
+        System.out.println("당첨 번호를 입력해 주세요.");
+        List<String> input =  List.of(Console.readLine().split(","));
+        return input.stream().map(Integer::parseInt).collect(Collectors.toList());
+
+    }
+
+    public int readBonusNumber() {
+        System.out.println("보너스 번호를 입력해 주세요.");
+        return Integer.parseInt(Console.readLine());
     }
 
     public int validatePurchaseAmount(String purchaseAmountInput) {

@@ -18,7 +18,7 @@ public class OutputView {
         });
     }
 
-    public void printWinningCounts(Map<LottoGame.LottoPrice, Integer> winningCounts) {
+    public void printWinningCounts(Map<LottoGame.LottoPrice, Long> winningCounts) {
         System.out.println("당첨 통계\n---");
         List<LottoGame.LottoPrice> winnings = List.of(
                 LottoGame.LottoPrice.FIFTH,

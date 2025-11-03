@@ -1,6 +1,7 @@
 package lotto.Controller;
 
 import lotto.Model.Lotto;
+import lotto.Model.LottoGame;
 import lotto.Model.NumberGenerator;
 import lotto.View.InputView;
 import lotto.View.OutputView;
@@ -21,5 +22,12 @@ public class LottoController {
 
         outputView.printLottoNumbers(lottos);
 
+        List<Integer> winningNumbers = inputView.readWinningNumbers();
+        int bonusNumber = inputView.readBonusNumber();
+
+        LottoGame game = new LottoGame(lottos, winningNumbers, bonusNumber);
+
+        outputView.printWinningCounts(game.getWinningCount());
+        outputView.printTotalReturns(game);
     }
 }
