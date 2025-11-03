@@ -71,7 +71,7 @@ public class LottoGame {
                 ));
     }
 
-    private long getWinnings(Map<LottoPrice, Long> winnings) {
+    public long getWinnings(Map<LottoPrice, Long> winnings) {
         return winnings.entrySet().stream()
                 .mapToLong(entry -> entry.getKey().getPrice() * entry.getValue())
                 .sum();
@@ -79,6 +79,6 @@ public class LottoGame {
 
     public float getTotalReturns() {
         long totalWinnings = getWinnings(getWinningCount());
-        return (float) totalWinnings / (float) lottoCount * 1000;
+        return (float) totalWinnings / (lottoCount * 1000f);
     }
 }
