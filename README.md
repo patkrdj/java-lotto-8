@@ -5,10 +5,14 @@
   - [MUST] 1,000원 단위로 나누어 떨어지지 않으면 `IllegalArgumentException`을 발생시켜야 한다.
   - [MUST] 양수가 아닌 값이 들어올 때 `IllegalArgumentException`을 발생시켜야 한다.
   - [SHOULD] 입력 받기 전에 `구입금액을 입력해 주세요.` 메세지를 출력한다.
-- 발행한 로또 번호 출력하기
+- 랜덤 값 추출하기
   - [MUST] Random 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickUniqueNumbersInRange()`를 활용해야 한다.
   - [MUST] 로또 번호는 오름차순으로 정렬되어야 한다.
   - [MUST] 로또 번호값은 중복되지 않아야 한다.
+- 발행한 로또 번호 출력하기
+  - [MUST] 랜덤 값을 받아서 로또 객체를 생성해야 한다.
+  - [MUST] 랜덤한 값의 개수가 6개가 아니라면 `IllegalArgumentException`을 발생시켜야 한다.
+  - [MUST] `[num1, num2, num3...]` 이러한 형식을 따라야 한다.
 - 당첨 번호 입력 받기
   - [MUST] 당첨 번호는 쉼표(,)로 구분되어야 한다.
   - [MUST] 당첨 번호의 개수는 6개가 아니라면 `IllegalArgumentException`을 발생시켜야 한다.
@@ -19,6 +23,7 @@
   - [SHOULD] 입력 받기 전에 `보너스 번호를 입력해 주세요.` 메세지를 출력한다.
 - 발행한 로또 번호와 당첨 번호 비교하기
   - [MUST] 일치하는 숫자를 개수를 확인하여 1등부터 꽝까지의 결과를 계산해야 한다.
+  - [SHOULD] 당첨 여부는 Enum으로 관리한다.
 - 결과 출력하기
   - [MUST] 각 당첨된 복권 개수를 출력한다.
   - [MUST] 총 당첨 금액을 계산하여 총 수익률을 출력한다.
