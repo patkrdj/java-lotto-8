@@ -1,9 +1,6 @@
 package lotto.Model;
 
-import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
@@ -45,19 +42,14 @@ public class LottoGame {
         }
     }
 
-    private int lottoCount;
+    private final int lottoCount;
     private List<Lotto> lottos = new ArrayList<>();
-    private List<Integer> winningNumbers = new ArrayList<>();
-    private int bonusNumber;
+    private final List<Integer> winningNumbers;
+    private final int bonusNumber;
 
-    public LottoGame(int lottoCount, List<Integer> winningNumbers, int bonusNumber) {
-        this.lottoCount = lottoCount;
-        List<Integer> randomNumbers = new ArrayList<>();
-        for (int i = 0; i < lottoCount; i++) {
-            randomNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-            randomNumbers.sort(Comparator.naturalOrder());
-            lottos.add(new Lotto(randomNumbers));
-        }
+    public LottoGame(List<Lotto> lottos, List<Integer> winningNumbers, int bonusNumber) {
+        this.lottoCount = lottos.size();
+        this.lottos = lottos;
         this.winningNumbers = winningNumbers;
         this.bonusNumber = bonusNumber;
     }
