@@ -35,6 +35,6 @@ public class OutputView {
     }
 
     public void printTotalReturns(LottoGame lottoGame) {
-        System.out.println(String.format("총 수익률은 %.2f%입니다.", lottoGame.getTotalReturns()));
+        System.out.printf("총 수익률은 %.1f%%입니다.%n", lottoGame.getTotalReturns() * 100);
     }
 }
