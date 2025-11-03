@@ -1,6 +1,7 @@
 package lotto.Model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
@@ -65,16 +66,19 @@ public class LottoGame {
     }
 
     public Map<LottoPrice, Long> getWinningCount() {
-        return lottos.stream()
+        Map<LottoPrice, Long> winningCount = new HashMap<>();
+        for (LottoPrice price : LottoPrice.values())
+            winningCount.put(price, 0L);
+        lottos.stream()
                 .map(lotto -> {
                     long matches = lotto.compareWinningNumbers(winningNumbers);
                     boolean bonusMatch = lotto.compareBonusNumber(bonusNumber);
                     return LottoPrice.valueOf(matches, bonusMatch);
                 })
-                .collect(Collectors.groupingBy(
-                        Function.identity(),
-                        Collectors.counting()
-                ));
+                .forEach( price -> {
+                    winningCount.merge(price, 1L, Long::sum);
+                });
+        return winningCount;
     }
 
     public long getWinnings(Map<LottoPrice, Long> winnings) {
